@@ -36,7 +36,7 @@ making it possible to explore calculation results more easily.
 \end{wrapfigure}
 
 As can be seen \autoref{fig:bad}, directly using provided facilities in ROOT yields
-unsactisfactory visual results. Axis labels are sized inconsistently, as the font sizes
+unsatisfactory visual results. Axis labels are sized inconsistently, as the font sizes
 are derived from the size of the pad within the parent. Showing axes titles would reveal
 that here sizing is also inconsistent, as are the offsets from the axis itself. A major
 problem for quality is the clipping of the 0 of the upper y axis. It results from the pads meeting,
@@ -81,7 +81,7 @@ Two pads receive the input histograms and the output graphs respectively. Drawin
 when drawing objects in these pads. The draw option "A" of \texttt{TH1} prevents visible axes, while
 retaining the ability to interact with them. The draw option "I" achieves the same when drawing
 \texttt{TGraph}. The pad marked by \emph{fTopPad} receives all the visual axes. Since all of them are drawn
-in one pad spanning the full dimensions of the containing pad, label and title sizes and offsets are consisten
+in one pad spanning the full dimensions of the containing pad, label and title sizes and offsets are consistent
 between them. Properties for the visual axes are first imported from the corresponding axes of the drawn
 objects, and changed where necessary. For example, the class always hides the axes labels and title on the upper x axis. The margins of the pads are synchronized. Using setters on \texttt{TRatioPlot}, margins that
 should be identical can be set at the same time. Another setter can be used to determine the separation
@@ -118,8 +118,8 @@ also possible to set the y positions of an arbitrary number of dashed lines manu
 
 In order to support the functionality of ROOT to view and manipulate most structures interactively,
 care has to be taken. Without the use of \texttt{TRatioPlot}, modifying one of the pads used for
-display will not trigger a corresponding change in the other one. This is undesirably for obvious reasons.
-\texttt{TRatioPlot} aims to fix this problems. Using the the Signal/Slot mechanism, it is possible 
+display will not trigger a corresponding change in the other one. This is undesirable for obvious reasons and
+\texttt{TRatioPlot} aims to fix these problems. Using the Signal/Slot mechanism, it is possible 
 to react to changes, that are triggered and processed elsewhere. The class connects to three signals
 from the contained pads, \emph{RangeAxisChanged}, \emph{Resized} and \emph{UnZoomed}, only the first
 of which used to exist. It was called whenever the actual range of the axis changed, as the name
@@ -142,14 +142,14 @@ pad margins, logarithmic or linear axis setting for the x axis, as well as the p
 A large number of calculations can be performed, that lend itself to visualization in the manner that
 this class tries to provide. Effectively, any calculation whose output shares the x axis with this
 inputs benefits from display in this way. While implementing all calculations in such a class would
-be out of scope for a rather generic solution, it is still useful to have prebuild facilities for 
+be out of scope for a rather generic solution, it is still useful to have pre-build facilities for 
 a few of the most used calculation modes. 
 
 \textbf{Ratio of two histograms}\\
 The simplest case is the division of one histogram by another one. This can be performed in multiple
 ways using \texttt{TRatioPlot}. The default, when instantiating the class simply with two histograms,
 is to delegate the calculation to \texttt{TGraphAsymmErrors::Divide}, while passing it the option
-\emph{pois}, which makes use of the poisson error for each of the bins, and yields asymmetric errors on
+\emph{pois}, which makes use of the Poisson error for each of the bins, and yields asymmetric errors on
 the output. Another option is using the method \texttt{TH1::Divide}, which yields symmetric errors
 and can be invoked using the option \emph{divsym} in the constructor.
 
